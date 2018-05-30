@@ -1771,6 +1771,7 @@ static int mdss_mdp_irq_clk_setup(struct mdss_data_type *mdata)
 
 	ret = devm_request_irq(&mdata->pdev->dev, mdss_mdp_hw.irq_info->irq,
 				mdss_irq_handler, 0, "MDSS", mdata);
+				IRQF_PERF_CRITICAL, "MDSS", mdata);
 	if (ret) {
 		pr_err("mdp request_irq() failed!\n");
 		return ret;
