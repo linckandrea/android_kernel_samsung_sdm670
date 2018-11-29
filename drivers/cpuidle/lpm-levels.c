@@ -277,8 +277,8 @@ static int lpm_starting_cpu(unsigned int cpu)
 {
 	struct lpm_cluster *cluster = per_cpu(cpu_lpm, cpu)->parent;
 
-	cluster_unprepare(cluster, get_cpu_mask(cpu), NR_LPM_LEVELS, false,
-						0, true);
+	cluster_unprepare(cluster, get_cpu_mask(cpu), NR_LPM_LEVELS,
+							false, 0, true);
 	return 0;
 }
 
