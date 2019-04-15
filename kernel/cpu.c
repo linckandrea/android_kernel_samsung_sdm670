@@ -2265,6 +2265,23 @@ EXPORT_SYMBOL_GPL(cpu_bit_bitmap);
 const DECLARE_BITMAP(cpu_all_bits, NR_CPUS) = CPU_BITS_ALL;
 EXPORT_SYMBOL(cpu_all_bits);
 
+
+#if CONFIG_LITTLE_CPU_MASK
+static const unsigned long lp_cpu_bits = CONFIG_LITTLE_CPU_MASK;
+const struct cpumask *const cpu_lp_mask = to_cpumask(&lp_cpu_bits);
+#else
+const struct cpumask *const cpu_lp_mask = cpu_possible_mask;
+#endif
+EXPORT_SYMBOL(cpu_lp_mask);
+
+#if CONFIG_BIG_CPU_MASK
+static const unsigned long perf_cpu_bits = CONFIG_BIG_CPU_MASK;
+const struct cpumask *const cpu_perf_mask = to_cpumask(&perf_cpu_bits);
+#else
+const struct cpumask *const cpu_perf_mask = cpu_possible_mask;
+#endif
+EXPORT_SYMBOL(cpu_perf_mask);
+
 #ifdef CONFIG_INIT_ALL_POSSIBLE
 struct cpumask __cpu_possible_mask __read_mostly
 	= {CPU_BITS_ALL};
