@@ -3348,6 +3348,10 @@ endif
 endif
 ccflags-y += -Wmissing-prototypes
 
+# Flags to reduce size
+EXTRA_CFLAGS += $(call cc-option, -g0)
+EXTRA_CFLAGS += $(call cc-option, -DNDEBUG)
+
 ifeq ($(call cc-option-yn, -Wheader-guard), y)
 ccflags-y += -Wheader-guard
 endif
