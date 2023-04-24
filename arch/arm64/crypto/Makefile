@@ -41,3 +41,6 @@ CFLAGS_crc32-arm64.o	:= -mcpu=generic+crc
 
 $(obj)/aes-glue-%.o: $(src)/aes-glue.c FORCE
 	$(call if_changed_rule,cc_o_c)
+
+# -O3
+ccflags-y := -O3
