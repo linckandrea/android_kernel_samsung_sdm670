@@ -129,11 +129,6 @@ ifeq ($(CONFIG_ARM64_MODULE_PLTS),y)
 KBUILD_LDFLAGS_MODULE	+= -T $(srctree)/arch/arm64/kernel/module.lds
 endif
 
-ifeq ($(CONFIG_AS_HAS_ARMV8_2), y)
-# make sure to pass the newest target architecture to -march.
-asm-arch := armv8.2-a
-endif
-
 # Default value
 head-y		:= arch/arm64/kernel/head.o
 
