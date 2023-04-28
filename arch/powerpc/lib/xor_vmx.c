@@ -64,14 +64,8 @@ typedef vector signed char unative_t;
 		V1##_3 = vec_xor(V1##_3, V2##_3);	\
 	} while (0)
 
-<<<<<<< HEAD
 void xor_altivec_2(unsigned long bytes, unsigned long *v1_in,
 		   unsigned long *v2_in)
-=======
-void __xor_altivec_2(unsigned long bytes,
-		     unsigned long * __restrict v1_in,
-		     const unsigned long * __restrict v2_in)
->>>>>>> 02e82db2d3c44... lib/xor: make xor prototypes more friendly to compiler vectorization
 {
 	DEFINE(v1);
 	DEFINE(v2);
@@ -95,15 +89,8 @@ void __xor_altivec_2(unsigned long bytes,
 }
 EXPORT_SYMBOL(xor_altivec_2);
 
-<<<<<<< HEAD
 void xor_altivec_3(unsigned long bytes, unsigned long *v1_in,
 		   unsigned long *v2_in, unsigned long *v3_in)
-=======
-void __xor_altivec_3(unsigned long bytes,
-		     unsigned long * __restrict v1_in,
-		     const unsigned long * __restrict v2_in,
-		     const unsigned long * __restrict v3_in)
->>>>>>> 02e82db2d3c44... lib/xor: make xor prototypes more friendly to compiler vectorization
 {
 	DEFINE(v1);
 	DEFINE(v2);
@@ -131,17 +118,9 @@ void __xor_altivec_3(unsigned long bytes,
 }
 EXPORT_SYMBOL(xor_altivec_3);
 
-<<<<<<< HEAD
 void xor_altivec_4(unsigned long bytes, unsigned long *v1_in,
 		   unsigned long *v2_in, unsigned long *v3_in,
 		   unsigned long *v4_in)
-=======
-void __xor_altivec_4(unsigned long bytes,
-		     unsigned long * __restrict v1_in,
-		     const unsigned long * __restrict v2_in,
-		     const unsigned long * __restrict v3_in,
-		     const unsigned long * __restrict v4_in)
->>>>>>> 02e82db2d3c44... lib/xor: make xor prototypes more friendly to compiler vectorization
 {
 	DEFINE(v1);
 	DEFINE(v2);
@@ -173,18 +152,9 @@ void __xor_altivec_4(unsigned long bytes,
 }
 EXPORT_SYMBOL(xor_altivec_4);
 
-<<<<<<< HEAD
 void xor_altivec_5(unsigned long bytes, unsigned long *v1_in,
 		   unsigned long *v2_in, unsigned long *v3_in,
 		   unsigned long *v4_in, unsigned long *v5_in)
-=======
-void __xor_altivec_5(unsigned long bytes,
-		     unsigned long * __restrict v1_in,
-		     const unsigned long * __restrict v2_in,
-		     const unsigned long * __restrict v3_in,
-		     const unsigned long * __restrict v4_in,
-		     const unsigned long * __restrict v5_in)
->>>>>>> 02e82db2d3c44... lib/xor: make xor prototypes more friendly to compiler vectorization
 {
 	DEFINE(v1);
 	DEFINE(v2);
