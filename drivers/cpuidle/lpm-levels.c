@@ -1250,41 +1250,11 @@ static bool psci_enter_sleep(struct lpm_cpu *cpu, int idx, bool from_idle)
 	 * idx = 0 is the default LPM state
 	 */
 
-<<<<<<< HEAD
-=======
-		stop_critical_timings();
-		success = !arm_cpuidle_suspend(state_id);
-		start_critical_timings();
-		return success;
-	}
-}
-#elif defined(CONFIG_ARM_PSCI)
-bool psci_enter_sleep(struct lpm_cluster *cluster, int idx, bool from_idle)
-{
->>>>>>> 31374de4bb98... cpuidle: lpm-levels: Remove debug event logging
 	if (!idx) {
 		stop_critical_timings();
 		cpu_do_idle();
 		start_critical_timings();
 		return 1;
-<<<<<<< HEAD
-=======
-	} else {
-		int affinity_level = 0;
-		int state_id = get_cluster_id(cluster, &affinity_level);
-		int power_state =
-			PSCI_POWER_STATE(cluster->cpu->levels[idx].is_reset);
-		bool success = false;
-
-		affinity_level = PSCI_AFFINITY_LEVEL(affinity_level);
-		state_id |= (power_state | affinity_level
-			| cluster->cpu->levels[idx].psci_id);
-
-		stop_critical_timings();
-		success = !arm_cpuidle_suspend(state_id);
-		start_critical_timings();
-		return success;
->>>>>>> 31374de4bb98... cpuidle: lpm-levels: Remove debug event logging
 	}
 
 	if (from_idle && cpu->levels[idx].use_bc_timer) {
@@ -1649,28 +1619,12 @@ static int lpm_suspend_enter(suspend_state_t state)
 	}
 	cpu_prepare(lpm_cpu, idx, false);
 	cluster_prepare(cluster, cpumask, idx, false, 0);
-<<<<<<< HEAD
 
 	success = psci_enter_sleep(lpm_cpu, idx, false);
 
 	cluster_unprepare(cluster, cpumask, idx, false, 0, success);
 	cpu_unprepare(lpm_cpu, idx, false);
-=======
 
-	/*
-	 * Print the clocks which are enabled during system suspend
-	 * This debug information is useful to know which are the
-	 * clocks that are enabled and preventing the system level
-	 * LPMs(XO and Vmin).
-	 */
-	clock_debug_print_enabled();
-
-	BUG_ON(!use_psci);
-	psci_enter_sleep(cluster, idx, true);
-
-	cluster_unprepare(cluster, cpumask, idx, false, 0);
-	cpu_unprepare(cluster, idx, false);
->>>>>>> 31374de4bb98... cpuidle: lpm-levels: Remove debug event logging
 	return 0;
 }
 
@@ -1689,12 +1643,9 @@ static const struct platform_freeze_ops lpm_freeze_ops = {
 static int lpm_probe(struct platform_device *pdev)
 {
 	int ret;
-<<<<<<< HEAD
 	int size;
 	unsigned int cpu;
 	struct hrtimer *cpu_histtimer;
-=======
->>>>>>> 31374de4bb98... cpuidle: lpm-levels: Remove debug event logging
 	struct kobject *module_kobj = NULL;
 	struct md_region md_entry;
 
@@ -1725,10 +1676,6 @@ static int lpm_probe(struct platform_device *pdev)
 	}
 
 	cluster_timer_init(lpm_root_node);
-
-	size = num_dbg_elements * sizeof(struct lpm_debug);
-	lpm_debug = dma_alloc_coherent(&pdev->dev, size,
-			&lpm_debug_phys, GFP_KERNEL);
 
 	register_cluster_lpm_stats(lpm_root_node, NULL);
 
