@@ -9,11 +9,11 @@ read version
 case $version in
 wifi)
 echo wifi defconfig selected
-make O=out ARCH=arm64 gts4lvwifi_defconfig
+make O=out ARCH=arm64 gts4lvwifi_full_defconfig
 ;;
 lte)
 echo lte defconfig selected
-make O=out ARCH=arm64 gts4lv_defconfig
+make O=out ARCH=arm64 gts4lv_full_defconfig
 ;;
 *)
 echo the input typed is wrong, compilation aborted...
