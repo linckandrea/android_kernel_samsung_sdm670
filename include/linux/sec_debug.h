@@ -22,7 +22,10 @@
 #include <linux/sched.h>
 #include <linux/semaphore.h>
 
+#ifdef CONFIG_SEC_DEBUG
 #include <asm/sec_debug.h>
+#endif
+
 #include <asm/cacheflush.h>
 #include <asm/io.h>
 

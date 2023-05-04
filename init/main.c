@@ -829,7 +829,7 @@ static bool __init_or_module initcall_blacklisted(initcall_t fn)
 #endif
 __setup("initcall_blacklist=", initcall_blacklist);
 
-#ifdef CONFIG_SEC_BSP
+#ifdef CONFIG_SEC_DEBUG
 static bool __init_or_module initcall_sec_debug = true;
 
 static int __init_or_module do_one_initcall_sec_debug(initcall_t fn)
@@ -891,7 +891,7 @@ int __init_or_module do_one_initcall(initcall_t fn)
 
 	if (initcall_debug)
 		ret = do_one_initcall_debug(fn);
-#ifdef CONFIG_SEC_BSP
+#ifdef CONFIG_SEC_DEBUG
 	else if (initcall_sec_debug)
 		ret = do_one_initcall_sec_debug(fn);
 #endif
