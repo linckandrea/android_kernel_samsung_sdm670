@@ -547,10 +547,8 @@ static int _sde_encoder_phys_cmd_handle_ppdone_timeout(
 #endif
 #if defined(CONFIG_DISPLAY_SAMSUNG) && defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
 		SDE_DBG_DUMP("all", "dbg_bus", "vbif_dbg_bus");
-#ifdef CONFIG_SEC_DEBUG
 		if (sec_debug_is_enabled()) SDE_DBG_DUMP("panic");
-#endif
-#elif defined(CONFIG_DISPLAY_SAMSUNG) && (CONFIG_SEC_DEBUG)
+#elif defined(CONFIG_DISPLAY_SAMSUNG)
 		SDE_DBG_DUMP("all", "dbg_bus", "vbif_dbg_bus", "panic");
 #else
 		SDE_DBG_DUMP("all", "dbg_bus", "vbif_dbg_bus");

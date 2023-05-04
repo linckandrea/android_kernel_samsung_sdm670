@@ -18,7 +18,6 @@
 #include <linux/muic/muic.h>
 #include <linux/muic/muic_notifier.h>
 #include <linux/firmware.h>
-#include <linux/uaccess.h>
 #ifdef CONFIG_OF
 #include <linux/of_gpio.h>
 #endif

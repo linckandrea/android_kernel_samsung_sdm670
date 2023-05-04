@@ -10,7 +10,6 @@
  * ================================================================
  */
 
-#include <linux/reboot.h>
 #include "ss_ddi_spi_common.h"
 
 #define SPI_CTRL_RX 0x00
