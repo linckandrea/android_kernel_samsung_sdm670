@@ -304,7 +304,7 @@ static void bluecard_write_wakeup(struct bluecard_info *info)
 
 			/* Wait until the command reaches the baseband */
 			prepare_to_wait(&wq, &wait, TASK_INTERRUPTIBLE);
-			schedule_timeout(HZ/10);
+			schedule_timeout(msecs_to_jiffies(100));
 			finish_wait(&wq, &wait);
 
 			/* Set baud on baseband */
@@ -318,7 +318,7 @@ static void bluecard_write_wakeup(struct bluecard_info *info)
 
 			/* Wait before the next HCI packet can be send */
 			prepare_to_wait(&wq, &wait, TASK_INTERRUPTIBLE);
-			schedule_timeout(HZ);
+			schedule_timeout(msecs_to_jiffies(100));
 			finish_wait(&wq, &wait);
 		}
 
