@@ -2,6 +2,11 @@ mkdir -p out
 make O=out clean
 make O=out mrproper
 
+branch=$(git symbolic-ref --short HEAD)
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+last_commit=$(git rev-parse --verify --short=8 HEAD)
+export LOCALVERSION="-Armonia-Kernel-${branch_name}/${last_commit}"
+
 echo input "wifi" or "lte" according to the version you want to build
 
 read version
@@ -52,3 +57,24 @@ echo the input typed is wrong, compilation aborted...
 return 0
 ;;
 esac
+
+case $version in
+wifi)
+cp ./out/arch/arm64/boot/Image.gz-dtb ./AnyKernel3/gts4lvwifi
+cd ./AnyKernel3/gts4lvwifi
+zip -r9 UPDATE-ArmoniaKernel-"$version"-"$branch"-"$last_commit".zip * -x .git README.md *placeholder
+;;
+lte)
+cp ./out/arch/arm64/boot/Image.gz-dtb ./AnyKernel3/gts4lv
+cd ./AnyKernel3/gts4lv
+zip -r9 UPDATE-ArmoniaKernel-"$version"-"$branch"-"$last_commit".zip * -x .git README.md *placeholder
+;;
+*)
+echo the input typed is wrong, compilation aborted...
+return 0
+;;
+esac
+
+cd ..
+cd ..
+echo THE END
