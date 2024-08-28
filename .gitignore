@@ -55,6 +55,8 @@ Module.symvers
 /Module.markers
 /out
 /Anykernel3
+/AnyKernel3/gts4lv
+/AnyKernel3/gts4lvwifi
 
 #
 # Debian directory (make deb-pkg)

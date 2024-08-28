@@ -41,14 +41,14 @@ rm ./AnyKernel3/gts4lvwifi/*.zip
 rm ./AnyKernel3/gts4lvwifi/Image.gz-dtb
 cp ./out/arch/arm64/boot/Image.gz-dtb ./AnyKernel3/gts4lvwifi
 cd ./AnyKernel3/gts4lvwifi
-zip -r9 UPDATE-ArmoniaKernel-"$version"-"$branch"-"$last_commit".zip * -x .git README.md *placeholder
+zip -r9 ArmoniaKernel-"$version"-"$branch"-"$last_commit".zip * -x .git README.md *placeholder
 ;;
 lte)
 rm ./AnyKernel3/gts4lv/*.zip
 rm ./AnyKernel3/gts4lv/Image.gz-dtb
 cp ./out/arch/arm64/boot/Image.gz-dtb ./AnyKernel3/gts4lv
 cd ./AnyKernel3/gts4lv
-zip -r9 UPDATE-ArmoniaKernel-"$version"-"$branch"-"$last_commit".zip * -x .git README.md *placeholder
+zip -r9 ArmoniaKernel-"$version"-"$branch"-"$last_commit".zip * -x .git README.md *placeholder
 ;;
 *)
 echo the input typed is wrong, compilation aborted...
